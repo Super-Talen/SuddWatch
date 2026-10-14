@@ -1,0 +1,27 @@
+column,type,dtype,n_unique,role,n_missing,pct_missing
+adm2_pcode,Nominal (ID / join key),str,79,identifier/meta,0,0.0
+adm2_name,Nominal (ID / label),str,79,identifier/meta,0,0.0
+adm1_name,Nominal categorical,str,11,feature,0,0.0
+window_start,Datetime,datetime64[us],295,identifier/meta,0,0.0
+issue_date,Datetime,datetime64[us],295,identifier/meta,0,0.0
+split,"Nominal (partition tag, not a feature)",str,3,identifier/meta,0,0.0
+n_scenes,Discrete (count),int64,53,feature,0,0.0
+obs_frac,Continuous,float64,2820,feature,0,0.0
+water_frac,Continuous,float64,16798,feature,2145,9.2
+water_frac_lag1,Continuous,float64,16734,feature,2224,9.54
+water_frac_lag2,Continuous,float64,16671,feature,2303,9.88
+rain_12d_mm,Continuous,float64,20445,feature,0,0.0
+rain_36d_mm,Continuous,float64,21652,feature,0,0.0
+rain_90d_mm,Continuous,float64,22962,feature,0,0.0
+rain_90d_anom_mm,Continuous,float64,23304,feature,0,0.0
+county_area_km2,Continuous,float64,79,feature,0,0.0
+elev_mean_m,Continuous,float64,79,feature,0,0.0
+elev_std_m,Continuous,float64,79,feature,0,0.0
+slope_mean_deg,Continuous,float64,79,feature,0,0.0
+hand_mean_m,Continuous,float64,79,feature,0,0.0
+hand_lt5m_frac,Continuous,float64,71,feature,0,0.0
+twi_mean,Continuous,float64,79,feature,0,0.0
+perm_water_frac,Continuous,float64,41,feature,0,0.0
+jrc_water_occurrence_pct,Continuous,float64,79,feature,0,0.0
+month,Discrete (cyclical),int64,12,feature,0,0.0
+y_flood_2_4wk,Binary target (Y),float64,2,target,2145,9.2

@@ -1,0 +1,11 @@
+feature,reason
+twi_mean,|rho|=0.978 with hand_mean_m
+hand_mean_m,|rho|=0.960 with slope_mean_deg
+water_frac_lag1,|rho|=0.944 with water_frac
+water_frac_lag2,|rho|=0.926 with water_frac
+elev_std_m,|rho|=0.920 with elev_mean_m
+rain_12d_mm,|rho|=0.916 with rain_36d_mm
+slope_mean_deg,|rho|=0.907 with hand_lt5m_frac
+perm_water_frac,|rho|=0.894 with jrc_water_occurrence_pct
+elev_mean_m,|rho|=0.883 with hand_lt5m_frac
+rain_90d_mm,|rho|=0.866 with rain_36d_mm

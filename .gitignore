@@ -1,0 +1,41 @@
+# --- Python / environments ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# --- Earth Engine / credentials (never commit) ---
+.config/
+credentials
+*.json.key
+.env
+
+# --- Large raw data binaries (re-downloadable; see README "Reproduce") ---
+data/raw/*.gpkg
+data/raw/*.tif
+data/raw/*.tif.gz
+data/raw/*.zip
+data/raw/ssd_admin_boundaries/ssd_admin3.geojson
+data/raw/ssd_admin_boundaries/ssd_adminlines.geojson
+data/raw/ssd_admin_boundaries/ssd_adminpoints.geojson
+# per-chunk Earth Engine caches (the merged CSVs ARE tracked)
+data/raw/gee/s1/
+data/raw/gee/chirps/
+data/raw/gee/chirps_daily_by_county.csv
+
+# --- OS / editor clutter ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# --- Course materials not part of the deliverable ---
+Assignment 2 Data Preprocessing-1.pdf
+
+# --- Superseded / intermediate (kept locally, not part of the deliverable) ---
+pull_sentinel1_srtm.py
+phase1_strategy/Phase1_Strategy_Report.html

@@ -1,0 +1,21 @@
+feature,type,test,abs_r_pb,p_pb,p_mannwhitney,mutual_info
+water_frac,Continuous,Point-biserial r + Mann-Whitney U + MI,0.25718,0.0,0.0,0.11882
+water_frac_lag1,Continuous,Point-biserial r + Mann-Whitney U + MI,0.239,0.0,0.0,0.09792
+water_frac_lag2,Continuous,Point-biserial r + Mann-Whitney U + MI,0.21633,0.0,0.0,0.09083
+rain_36d_mm,Continuous,Point-biserial r + Mann-Whitney U + MI,0.34631,0.0,0.0,0.07787
+rain_90d_mm,Continuous,Point-biserial r + Mann-Whitney U + MI,0.33959,0.0,0.0,0.06801
+month,Discrete (cyclical),Point-biserial r + Mann-Whitney U + MI,0.21829,0.0,0.0,0.06226
+rain_12d_mm,Continuous,Point-biserial r + Mann-Whitney U + MI,0.31085,0.0,0.0,0.05959
+hand_lt5m_frac,Continuous,Point-biserial r + Mann-Whitney U + MI,0.1608,0.0,0.0,0.03815
+county_area_km2,Continuous,Point-biserial r + Mann-Whitney U + MI,0.04679,0.0,0.0,0.0381
+jrc_water_occurrence_pct,Continuous,Point-biserial r + Mann-Whitney U + MI,0.09109,0.0,0.0,0.03796
+slope_mean_deg,Continuous,Point-biserial r + Mann-Whitney U + MI,0.12129,0.0,0.0,0.03795
+elev_mean_m,Continuous,Point-biserial r + Mann-Whitney U + MI,0.1576,0.0,0.0,0.03795
+elev_std_m,Continuous,Point-biserial r + Mann-Whitney U + MI,0.09097,0.0,0.0,0.03793
+hand_mean_m,Continuous,Point-biserial r + Mann-Whitney U + MI,0.12073,0.0,0.0,0.03786
+twi_mean,Continuous,Point-biserial r + Mann-Whitney U + MI,0.16006,0.0,0.0,0.03783
+rain_90d_anom_mm,Continuous,Point-biserial r + Mann-Whitney U + MI,0.08825,0.0,0.0,0.03541
+obs_frac,Continuous,Point-biserial r + Mann-Whitney U + MI,0.00934,0.24441,0.00125,0.03273
+n_scenes,Discrete (count),Point-biserial r + Mann-Whitney U + MI,0.11201,0.0,0.0,0.02574
+adm1_name,Nominal categorical,Chi-square + Cramer's V + MI,0.16941,0.0,,0.01624
+perm_water_frac,Continuous,Point-biserial r + Mann-Whitney U + MI,0.07093,0.0,0.0,0.01307

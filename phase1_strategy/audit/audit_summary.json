@@ -1,0 +1,169 @@
+{
+  "N": 23305,
+  "P_total_columns": 26,
+  "P_candidate_features": 20,
+  "type_counts": {
+    "Continuous": 17,
+    "Datetime": 2,
+    "Nominal (ID / join key)": 1,
+    "Nominal (ID / label)": 1,
+    "Nominal categorical": 1,
+    "Nominal (partition tag, not a feature)": 1,
+    "Discrete (count)": 1,
+    "Discrete (cyclical)": 1,
+    "Binary target (Y)": 1
+  },
+  "overall_missing_pct": 1.46,
+  "complete_rows": 19708,
+  "rows_with_missing": 3597,
+  "y_labelled_rows": 21160,
+  "y_train": {
+    "n_rows": 16906,
+    "n_labelled": 15550,
+    "pos": 2987,
+    "neg": 12563,
+    "pos_rate": 0.1921,
+    "neg_to_pos_ratio": 4.21,
+    "first_issue": "2017-01-12",
+    "last_issue": "2023-12-31"
+  },
+  "y_validation": {
+    "n_rows": 3634,
+    "n_labelled": 2948,
+    "pos": 1072,
+    "neg": 1876,
+    "pos_rate": 0.3636,
+    "neg_to_pos_ratio": 1.75,
+    "first_issue": "2024-01-12",
+    "last_issue": "2025-07-05"
+  },
+  "y_test": {
+    "n_rows": 2765,
+    "n_labelled": 2662,
+    "pos": 980,
+    "neg": 1682,
+    "pos_rate": 0.3681,
+    "neg_to_pos_ratio": 1.72,
+    "first_issue": "2025-07-17",
+    "last_issue": "2026-08-29"
+  },
+  "split_pct_of_labelled": {
+    "train": 73.5,
+    "validation": 13.9,
+    "test": 12.6
+  },
+  "mechanism": {
+    "water_frac_missing_pct_by_era": {
+      "S1A+S1B (2017-2021)": 1.6,
+      "S1A only (2022-mid 2025)": 21.7,
+      "S1A+S1C/D (mid 2025-2026)": 3.7
+    },
+    "logit_rain_coef_adj_state_month": -0.01645872288307647,
+    "logit_rain_p_adj_state_month": 0.8629456718603061,
+    "chi2_era_p": 0.0,
+    "chi2_state_p": 0.0,
+    "rain36_missing_vs_observed_median_2022_24": [
+      77.15571974475412,
+      95.30337112146248
+    ],
+    "mannwhitney_rain_p_2022_24": 0.004944293635867105,
+    "missing_pct_by_state": {
+      "Abyei Region": 34.6,
+      "Central Equatoria": 1.6,
+      "Eastern Equatoria": 1.4,
+      "Jonglei": 2.4,
+      "Lakes": 1.9,
+      "Northern Bahr el Ghazal": 35.5,
+      "Unity": 5.5,
+      "Upper Nile": 19.3,
+      "Warrap": 6.7,
+      "Western Bahr el Ghazal": 25.8,
+      "Western Equatoria": 5.4
+    },
+    "missing_pct_by_year": {
+      "2017": 1.2,
+      "2018": 1.3,
+      "2019": 1.4,
+      "2020": 1.1,
+      "2021": 3.2,
+      "2022": 24.2,
+      "2023": 21.9,
+      "2024": 23.2,
+      "2025": 9.7,
+      "2026": 2.5
+    }
+  },
+  "collinearity_dropped": [
+    {
+      "feature": "twi_mean",
+      "reason": "|rho|=0.978 with hand_mean_m"
+    },
+    {
+      "feature": "hand_mean_m",
+      "reason": "|rho|=0.960 with slope_mean_deg"
+    },
+    {
+      "feature": "water_frac_lag1",
+      "reason": "|rho|=0.944 with water_frac"
+    },
+    {
+      "feature": "water_frac_lag2",
+      "reason": "|rho|=0.926 with water_frac"
+    },
+    {
+      "feature": "elev_std_m",
+      "reason": "|rho|=0.920 with elev_mean_m"
+    },
+    {
+      "feature": "rain_12d_mm",
+      "reason": "|rho|=0.916 with rain_36d_mm"
+    },
+    {
+      "feature": "slope_mean_deg",
+      "reason": "|rho|=0.907 with hand_lt5m_frac"
+    },
+    {
+      "feature": "perm_water_frac",
+      "reason": "|rho|=0.894 with jrc_water_occurrence_pct"
+    },
+    {
+      "feature": "elev_mean_m",
+      "reason": "|rho|=0.883 with hand_lt5m_frac"
+    },
+    {
+      "feature": "rain_90d_mm",
+      "reason": "|rho|=0.866 with rain_36d_mm"
+    }
+  ],
+  "collinearity_kept_numeric": [
+    "obs_frac",
+    "water_frac",
+    "rain_36d_mm",
+    "rain_90d_anom_mm",
+    "county_area_km2",
+    "hand_lt5m_frac",
+    "jrc_water_occurrence_pct",
+    "n_scenes"
+  ],
+  "unosat_validation": {
+    "unmatched_names_after_crosswalk": [],
+    "matched_pairs": 1657,
+    "per_state_median_temporal_spearman": {
+      "Central Equatoria": 0.39,
+      "Eastern Equatoria": -0.01,
+      "Jonglei": 0.51,
+      "Lakes": 0.18,
+      "Unity": 0.17,
+      "Upper Nile": -0.03,
+      "Warrap": -0.46,
+      "Western Bahr el Ghazal": -0.47,
+      "Western Equatoria": -0.14
+    },
+    "national_per_date_spearman": 0.379,
+    "n_dates": 27,
+    "pooled_spearman": 0.694,
+    "per_county_temporal_spearman_median": 0.041,
+    "per_county_n": 61,
+    "pct_counties_positive_rho": 55.7
+  }
+}
