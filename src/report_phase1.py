@@ -114,7 +114,7 @@ def main():
 <style>{css}</style></head><body>
 <h1>SuddWatch — Phase 1: Preprocessing &amp; Feature Engineering Strategy</h1>
 <div class="sub">04-652 AI System Design · Assignment 2 · Carnegie Mellon University Africa<br>
-Jok Akech Atem Mabior · Binary classification · Repository: <code>SuddWatch</code></div>
+Jok Akech Atem Mabior · Binary classification · Repository: <a href="https://github.com/Super-Talen/SuddWatch">https://github.com/Super-Talen/SuddWatch</a></div>
 
 <h2>0. Problem, task and data</h2>
 <table class="kv">
