@@ -55,7 +55,7 @@ SuddWatch/
 │   │   └── county_thresholds_train_only.csv  per-county P75 thresholds (training years only)
 │   └── processed/             Phase 2: cleaned, encoded, scaled feature matrix
 ├── phase1_strategy/
-│   ├── Phase1_Strategy_Report.pdf
+│   ├── Phase1_Strategy_Report.pdf   (IEEE conference format)
 │   └── audit/                 every audit table behind the report (CSV/JSON)
 ├── phase2_implementation/
 │   ├── notebooks/pipeline_execution.ipynb   (Phase 2)
@@ -100,3 +100,10 @@ above into `data/raw/` to re-run the label validation.
 6. **Model** (later assignments): gradient-boosted trees, logistic-regression baseline, `class_weight="balanced"`.
 
 All fitted statistics live inside one scikit-learn `Pipeline` that is fitted on `X_train` only.
+
+## AI assistance
+
+Claude (Anthropic) assisted with the Google Earth Engine extraction code, the panel-construction and audit scripts, and
+drafting the Phase 1 report. All data were extracted from the cited public sources with the author's Earth Engine account,
+every reported number is generated directly by the audit scripts, and all design decisions were reviewed and approved by
+the author.
