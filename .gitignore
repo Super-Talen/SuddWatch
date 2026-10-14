@@ -21,10 +21,9 @@ data/raw/*.zip
 data/raw/ssd_admin_boundaries/ssd_admin3.geojson
 data/raw/ssd_admin_boundaries/ssd_adminlines.geojson
 data/raw/ssd_admin_boundaries/ssd_adminpoints.geojson
-# per-chunk Earth Engine caches (the merged CSVs ARE tracked)
+# per-chunk Earth Engine caches (the merged CSVs ARE tracked, incl. chirps_daily_by_county.csv)
 data/raw/gee/s1/
 data/raw/gee/chirps/
-data/raw/gee/chirps_daily_by_county.csv
 
 # --- OS / editor clutter ---
 .DS_Store
