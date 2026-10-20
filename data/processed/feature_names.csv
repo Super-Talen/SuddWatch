@@ -1,0 +1,24 @@
+feature
+water_frac
+county_area_km2
+jrc_water_occurrence_pct
+obs_frac
+hand_lt5m_frac
+water_frac_delta
+rain_36d_mm
+rain_90d_anom_mm
+n_scenes
+adm1_name_Abyei Region
+adm1_name_Central Equatoria
+adm1_name_Eastern Equatoria
+adm1_name_Jonglei
+adm1_name_Lakes
+adm1_name_Northern Bahr el Ghazal
+adm1_name_Unity
+adm1_name_Upper Nile
+adm1_name_Warrap
+adm1_name_Western Bahr el Ghazal
+adm1_name_Western Equatoria
+month_sin
+month_cos
+water_frac_was_missing

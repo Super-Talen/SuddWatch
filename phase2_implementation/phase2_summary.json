@@ -1,0 +1,395 @@
+{
+  "phase1_reproduced": {
+    "N": 23305,
+    "P": 26,
+    "overall_missing_pct": 1.46,
+    "complete_rows": 19708
+  },
+  "split": {
+    "train": {
+      "rows": "15424",
+      "share_%": "73.9",
+      "positives": "2926",
+      "pos_rate_%": "19.0",
+      "first": "2017-01-12",
+      "last": "2023-12-07"
+    },
+    "validation": {
+      "rows": "2792",
+      "share_%": "13.4",
+      "positives": "1030",
+      "pos_rate_%": "36.9",
+      "first": "2024-01-12",
+      "last": "2025-06-11"
+    },
+    "test": {
+      "rows": "2662",
+      "share_%": "12.8",
+      "positives": "980",
+      "pos_rate_%": "36.8",
+      "first": "2025-07-17",
+      "last": "2026-08-29"
+    }
+  },
+  "purged_rows": 282,
+  "purged_windows": 4,
+  "labelled_used": 20878,
+  "capping": [
+    {
+      "feature": "rain_12d_mm",
+      "skew": 0.49,
+      "phase1_skew": 0.5,
+      "rule": "iqr",
+      "lower": -83.4,
+      "upper": 142.1,
+      "n_capped_train": 2,
+      "pct_capped_train": 0.01,
+      "kept_after_collinearity": false
+    },
+    {
+      "feature": "rain_36d_mm",
+      "skew": 0.21,
+      "phase1_skew": 0.24,
+      "rule": "z",
+      "lower": -148.5,
+      "upper": 346.0,
+      "n_capped_train": 0,
+      "pct_capped_train": 0.0,
+      "kept_after_collinearity": true
+    },
+    {
+      "feature": "rain_90d_mm",
+      "skew": 0.14,
+      "phase1_skew": 0.16,
+      "rule": "z",
+      "lower": -306.4,
+      "upper": 794.8,
+      "n_capped_train": 0,
+      "pct_capped_train": 0.0,
+      "kept_after_collinearity": false
+    },
+    {
+      "feature": "rain_90d_anom_mm",
+      "skew": 0.49,
+      "phase1_skew": 0.48,
+      "rule": "z",
+      "lower": -115.2,
+      "upper": 129.6,
+      "n_capped_train": 184,
+      "pct_capped_train": 1.19,
+      "kept_after_collinearity": true
+    }
+  ],
+  "collinear_pairs": 20,
+  "pairs_list": [
+    [
+      "hand_mean_m",
+      "twi_mean",
+      -0.978
+    ],
+    [
+      "slope_mean_deg",
+      "hand_mean_m",
+      0.964
+    ],
+    [
+      "hand_lt5m_frac",
+      "twi_mean",
+      0.964
+    ],
+    [
+      "slope_mean_deg",
+      "twi_mean",
+      -0.953
+    ],
+    [
+      "hand_mean_m",
+      "hand_lt5m_frac",
+      -0.947
+    ],
+    [
+      "water_frac_lag1",
+      "water_frac_lag2",
+      0.944
+    ],
+    [
+      "water_frac",
+      "water_frac_lag1",
+      0.944
+    ],
+    [
+      "water_frac",
+      "water_frac_lag2",
+      0.926
+    ],
+    [
+      "elev_mean_m",
+      "elev_std_m",
+      0.921
+    ],
+    [
+      "rain_12d_mm",
+      "rain_36d_mm",
+      0.915
+    ],
+    [
+      "slope_mean_deg",
+      "hand_lt5m_frac",
+      -0.908
+    ],
+    [
+      "elev_std_m",
+      "hand_mean_m",
+      0.908
+    ],
+    [
+      "elev_std_m",
+      "slope_mean_deg",
+      0.896
+    ],
+    [
+      "elev_mean_m",
+      "hand_mean_m",
+      0.894
+    ],
+    [
+      "perm_water_frac",
+      "jrc_water_occurrence_pct",
+      0.892
+    ],
+    [
+      "elev_mean_m",
+      "hand_lt5m_frac",
+      -0.889
+    ],
+    [
+      "elev_mean_m",
+      "twi_mean",
+      -0.889
+    ],
+    [
+      "elev_mean_m",
+      "slope_mean_deg",
+      0.886
+    ],
+    [
+      "rain_36d_mm",
+      "rain_90d_mm",
+      0.867
+    ],
+    [
+      "elev_std_m",
+      "twi_mean",
+      -0.863
+    ]
+  ],
+  "drop_phase2": [
+    "elev_mean_m",
+    "elev_std_m",
+    "hand_lt5m_frac",
+    "hand_mean_m",
+    "perm_water_frac",
+    "rain_12d_mm",
+    "rain_90d_mm",
+    "slope_mean_deg",
+    "water_frac_lag1",
+    "water_frac_lag2"
+  ],
+  "drop_pipeline": [
+    "elev_mean_m",
+    "elev_std_m",
+    "hand_mean_m",
+    "perm_water_frac",
+    "rain_12d_mm",
+    "rain_90d_mm",
+    "slope_mean_deg",
+    "twi_mean",
+    "water_frac_lag1",
+    "water_frac_lag2"
+  ],
+  "terrain_mi": {
+    "elev_mean_m": 0.0376,
+    "elev_std_m": 0.0439,
+    "slope_mean_deg": 0.0431,
+    "hand_mean_m": 0.0339,
+    "hand_lt5m_frac": 0.0381,
+    "twi_mean": 0.0473
+  },
+  "drop_matches_phase1": false,
+  "momentum": {
+    "max_abs_rho_with_retained": 0.201,
+    "mi": 0.0935
+  },
+  "mi": {
+    "water_frac": 0.1167,
+    "water_frac_lag1": 0.0956,
+    "water_frac_delta": 0.0935,
+    "water_frac_lag2": 0.0885,
+    "rain_36d_mm": 0.0772,
+    "rain_90d_mm": 0.0715,
+    "month": 0.0634,
+    "rain_12d_mm": 0.0627,
+    "twi_mean": 0.0473,
+    "elev_std_m": 0.0439,
+    "slope_mean_deg": 0.0431,
+    "jrc_water_occurrence_pct": 0.042,
+    "rain_90d_anom_mm": 0.0397,
+    "county_area_km2": 0.0395,
+    "hand_lt5m_frac": 0.0381,
+    "elev_mean_m": 0.0376,
+    "hand_mean_m": 0.0339,
+    "obs_frac": 0.0322,
+    "n_scenes": 0.0263,
+    "adm1_name": 0.0161,
+    "perm_water_frac": 0.0087
+  },
+  "water_frac_skew_stages": {
+    "Raw water_frac": 23.233,
+    "Log: log1p(100 x)": 2.75,
+    "Min-Max (of log)": 2.75,
+    "Standardized (of log)": 2.75
+  },
+  "processed_shapes": {
+    "train": [
+      15424,
+      23
+    ],
+    "validation": [
+      2792,
+      23
+    ],
+    "test": [
+      2662,
+      23
+    ]
+  },
+  "raw_feature_columns": 25,
+  "output_features": [
+    "water_frac",
+    "county_area_km2",
+    "jrc_water_occurrence_pct",
+    "obs_frac",
+    "hand_lt5m_frac",
+    "water_frac_delta",
+    "rain_36d_mm",
+    "rain_90d_anom_mm",
+    "n_scenes",
+    "adm1_name_Abyei Region",
+    "adm1_name_Central Equatoria",
+    "adm1_name_Eastern Equatoria",
+    "adm1_name_Jonglei",
+    "adm1_name_Lakes",
+    "adm1_name_Northern Bahr el Ghazal",
+    "adm1_name_Unity",
+    "adm1_name_Upper Nile",
+    "adm1_name_Warrap",
+    "adm1_name_Western Bahr el Ghazal",
+    "adm1_name_Western Equatoria",
+    "month_sin",
+    "month_cos",
+    "water_frac_was_missing"
+  ],
+  "pca": {
+    "k90": 9,
+    "k95": 13,
+    "n_components": 23,
+    "first5_pct": [
+      20.92,
+      15.39,
+      12.34,
+      11.42,
+      10.68
+    ]
+  },
+  "verification": {
+    "full (no collinearity drop)": {
+      "n_features": 34,
+      "cv_pr_auc_mean": 0.5341,
+      "cv_pr_auc_sd": 0.104,
+      "val_pr_auc": 0.8305
+    },
+    "reduced (Phase 1 drop list)": {
+      "n_features": 22,
+      "cv_pr_auc_mean": 0.5482,
+      "cv_pr_auc_sd": 0.1042,
+      "val_pr_auc": 0.8317
+    },
+    "reduced + momentum (final)": {
+      "n_features": 23,
+      "cv_pr_auc_mean": 0.5498,
+      "cv_pr_auc_sd": 0.1064,
+      "val_pr_auc": 0.8328
+    }
+  },
+  "groupkfold_pr_auc": [
+    0.6121,
+    0.0495
+  ],
+  "prevalence": {
+    "train": 0.1897,
+    "validation": 0.3689
+  },
+  "sensor_check": {
+    "by_era": {
+      "S1A+S1B 2017-21": 5.3,
+      "S1A only 2022-mid25": 19.1,
+      "S1A+S1C/D mid25-26": 30.8
+    },
+    "wet_by_year": {
+      "2017": 10.7,
+      "2018": 6.8,
+      "2019": 1.7,
+      "2020": 1.7,
+      "2021": 6.2,
+      "2022": 16.2,
+      "2023": 20.1,
+      "2024": 20.9,
+      "2025": 28.7,
+      "2026": 35.4
+    }
+  },
+  "label_sensitivity": {
+    "decision_rule": "adopt only if median within-county rho improves >= 0.10 and pooled rho drops <= 0.05",
+    "matched_pairs": 1657,
+    "results": {
+      "vv18": {
+        "pooled_rho": 0.696,
+        "median_within_county_rho": 0.064,
+        "core_median_within_county_rho": 0.163,
+        "n_counties": 58,
+        "adopt": false
+      },
+      "vv16": {
+        "pooled_rho": 0.617,
+        "median_within_county_rho": 0.065,
+        "core_median_within_county_rho": 0.111,
+        "n_counties": 62,
+        "adopt": false
+      },
+      "vh22": {
+        "pooled_rho": 0.523,
+        "median_within_county_rho": 0.008,
+        "core_median_within_county_rho": 0.052,
+        "n_counties": 63,
+        "adopt": false
+      },
+      "vh24": {
+        "pooled_rho": 0.612,
+        "median_within_county_rho": 0.079,
+        "core_median_within_county_rho": 0.121,
+        "n_counties": 62,
+        "adopt": false
+      },
+      "vh26": {
+        "pooled_rho": 0.678,
+        "median_within_county_rho": 0.129,
+        "core_median_within_county_rho": 0.306,
+        "n_counties": 59,
+        "adopt": false
+      }
+    },
+    "adopted": [
+      "vv18 (Phase 1 label kept)"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "decision_rule": "adopt only if median within-county rho improves >= 0.10 and pooled rho drops <= 0.05",
+  "matched_pairs": 1657,
+  "results": {
+    "vv18": {
+      "pooled_rho": 0.696,
+      "median_within_county_rho": 0.064,
+      "core_median_within_county_rho": 0.163,
+      "n_counties": 58,
+      "adopt": false
+    },
+    "vv16": {
+      "pooled_rho": 0.617,
+      "median_within_county_rho": 0.065,
+      "core_median_within_county_rho": 0.111,
+      "n_counties": 62,
+      "adopt": false
+    },
+    "vh22": {
+      "pooled_rho": 0.523,
+      "median_within_county_rho": 0.008,
+      "core_median_within_county_rho": 0.052,
+      "n_counties": 63,
+      "adopt": false
+    },
+    "vh24": {
+      "pooled_rho": 0.612,
+      "median_within_county_rho": 0.079,
+      "core_median_within_county_rho": 0.121,
+      "n_counties": 62,
+      "adopt": false
+    },
+    "vh26": {
+      "pooled_rho": 0.678,
+      "median_within_county_rho": 0.129,
+      "core_median_within_county_rho": 0.306,
+      "n_counties": 59,
+      "adopt": false
+    }
+  },
+  "adopted": [
+    "vv18 (Phase 1 label kept)"
+  ]
+}

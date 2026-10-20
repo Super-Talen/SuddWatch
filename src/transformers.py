@@ -86,6 +86,31 @@ class OutlierCapper(BaseEstimator, TransformerMixin):
         return np.asarray(input_features, dtype=object)
 
 
+class MomentumFeature(BaseEstimator, TransformerMixin):
+    """Add water_frac_delta = water_frac - water_frac_lag1 (change since the previous window).
+
+    Stateless and row-wise (no fitted statistics), placed after imputation so it never sees NaNs.
+    Phase 2 replacement for the raw lags dropped by the collinearity rule: Spearman |rho| <= 0.20
+    with every retained feature on training rows, while carrying the lag's signal (MI ~ 0.096).
+    """
+
+    def __init__(self, current="water_frac", previous="water_frac_lag1", name="water_frac_delta"):
+        self.current = current
+        self.previous = previous
+        self.name = name
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X = pd.DataFrame(X).copy()
+        X[self.name] = X[self.current] - X[self.previous]
+        return X
+
+    def get_feature_names_out(self, input_features=None):
+        return np.asarray(list(input_features) + [self.name], dtype=object)
+
+
 class CyclicalEncoder(BaseEstimator, TransformerMixin):
     """Encode a periodic integer (month 1-12) as sin/cos so December and January are adjacent."""
 

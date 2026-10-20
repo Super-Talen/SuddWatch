@@ -3,6 +3,7 @@ SuddWatch - modular ColumnTransformer / Pipeline definitions.
 
 Order of operations (all fitted on X_train only, re-fitted inside every CV fold):
   1. GroupMedianImputer  - county-median fill (+ missing indicators) for Sentinel-1 water features
+  1b. MomentumFeature    - water_frac_delta = water_frac - water_frac_lag1 (Phase 2 addition)
   2. OutlierCapper      - winsorise rainfall features to training Z (|z|>3) or 1.5xIQR fences
   3. ColumnTransformer   - log1p + scaling for skewed features, MinMax for bounded [0,1] fractions,
                            StandardScaler for near-symmetric features, one-hot for state,
@@ -19,7 +20,7 @@ from sklearn.model_selection import TimeSeriesSplit
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.preprocessing import FunctionTransformer, MinMaxScaler, OneHotEncoder, StandardScaler
 
-from .transformers import CyclicalEncoder, GroupMedianImputer, OutlierCapper, log1p_percent
+from .transformers import CyclicalEncoder, GroupMedianImputer, MomentumFeature, OutlierCapper, log1p_percent
 
 TARGET = "y_flood_2_4wk"
 GROUP = "adm2_pcode"
@@ -28,7 +29,7 @@ SKEWED = ["county_area_km2", "elev_mean_m",
           "elev_std_m", "slope_mean_deg", "hand_mean_m", "perm_water_frac",
           "jrc_water_occurrence_pct"]                                    # |skew| > 1 -> log1p
 BOUNDED = ["obs_frac", "hand_lt5m_frac"]                                 # fractions in [0, 1]
-SYMMETRIC = ["rain_12d_mm", "rain_36d_mm", "rain_90d_mm", "rain_90d_anom_mm",
+SYMMETRIC = ["water_frac_delta", "rain_12d_mm", "rain_36d_mm", "rain_90d_mm", "rain_90d_anom_mm",
              "twi_mean", "n_scenes"]                        # |skew| <= 1 -> StandardScaler
 NOMINAL = ["adm1_name"]                                                  # 11 states -> one-hot
 CYCLICAL = ["month"]
@@ -38,12 +39,19 @@ CAP_IQR = ["rain_12d_mm"]                                    # |skew| > 0.5 -> 1
 DROP_COLLINEAR = ['twi_mean', 'hand_mean_m', 'water_frac_lag1', 'water_frac_lag2', 'elev_std_m', 'rain_12d_mm', 'slope_mean_deg', 'perm_water_frac', 'elev_mean_m', 'rain_90d_mm']
 
 
-def _keep(cols):
-    return [c for c in cols if c not in DROP_COLLINEAR]
+def build_preprocessor(scale_tree_inputs=True, drop=None, momentum=True):
+    """Full preprocessing pipeline.
 
+    drop     : features removed by the collinearity rule (default: the Phase 1 drop list);
+               pass [] to build the un-reduced comparison pipeline used in the information-loss check.
+    momentum : add water_frac_delta after imputation.
+    Trees are scale-invariant, so scaling can be switched off for them (scale_tree_inputs=False).
+    """
+    drop = DROP_COLLINEAR if drop is None else drop
 
-def build_preprocessor(scale_tree_inputs=True):
-    """ColumnTransformer; trees are scale-invariant, so scaling can be switched off for them."""
+    def _keep(cols):
+        return [c for c in cols if c not in drop and (momentum or c != "water_frac_delta")]
+
     log_scale = make_pipeline(FunctionTransformer(np.log1p, feature_names_out="one-to-one"),
                               StandardScaler() if scale_tree_inputs else "passthrough")
     water_scale = make_pipeline(FunctionTransformer(log1p_percent, feature_names_out="one-to-one"),
@@ -57,17 +65,19 @@ def build_preprocessor(scale_tree_inputs=True):
         ("month_cyclic", CyclicalEncoder(12), CYCLICAL),
         ("missing_flags", "passthrough", [f"{c}_was_missing" for c in _keep(WATER)]),
     ], remainder="drop", verbose_feature_names_out=False)
-    return Pipeline([
-        ("impute", GroupMedianImputer(WATER, group_col=GROUP)),
+    steps = [("impute", GroupMedianImputer(WATER, group_col=GROUP))]
+    if momentum:
+        steps.append(("momentum", MomentumFeature()))
+    return Pipeline(steps + [
         ("cap_z", OutlierCapper(_keep(CAP_Z), method="z")),
         ("cap_iqr", OutlierCapper(_keep(CAP_IQR), method="iqr")),
         ("columns", ct),
     ])
 
 
-def build_pipeline(estimator=None, scale_tree_inputs=True):
+def build_pipeline(estimator=None, scale_tree_inputs=True, drop=None, momentum=True):
     est = estimator or LogisticRegression(class_weight="balanced", max_iter=2000)
-    pipe = build_preprocessor(scale_tree_inputs)
+    pipe = build_preprocessor(scale_tree_inputs, drop=drop, momentum=momentum)
     pipe.steps.append(("model", est))
     return pipe
 
