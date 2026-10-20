@@ -1,6 +1,5 @@
 # SuddWatch — County-Level Flood-Risk Forecasting for South Sudan's Sudd Wetlands
 
-**04-652 AI System Design · Assignment 2: Data Preprocessing · Carnegie Mellon University Africa**
 Author: Jok Akech Atem Mabior · Repository: https://github.com/Super-Talen/SuddWatch
 
 | | |
