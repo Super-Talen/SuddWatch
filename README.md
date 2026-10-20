@@ -103,7 +103,6 @@ All fitted statistics live inside one scikit-learn `Pipeline` that is fitted on 
 
 ## AI assistance
 
-Claude (Anthropic) assisted with the Google Earth Engine extraction code, the panel-construction and audit scripts, and
-drafting the Phase 1 report. All data were extracted from the cited public sources with the author's Earth Engine account,
-every reported number is generated directly by the audit scripts, and all design decisions were reviewed and approved by
+Claude (Anthropic) assisted with the Google Earth Engine extraction code. All data were extracted from the cited public sources with the author's Earth Engine account.
+Every reported number is generated directly by the audit scripts, and all design decisions were reviewed and approved by
 the author.
