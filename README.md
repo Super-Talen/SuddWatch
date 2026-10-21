@@ -92,45 +92,7 @@ files — is in **[`data/README.md`](data/README.md)**. One county's complete ti
 
 **Target definition and class balance.** Of 21,160 labelled rows, the positive class (Y=1) is 19.2% in train (4.21:1), 36.4% in validation and 36.8% in test. 2,145 rows have no label because the target window was not imaged by Sentinel-1 (MAR, acquisition plan); they are excluded from fitting, never imputed. Mitigation: `class_weight="balanced"`, validation-tuned decision threshold, PR-AUC/F1/recall metrics. Full audit: [`phase1_strategy/Phase1_Strategy_Report.pdf`](phase1_strategy/Phase1_Strategy_Report.pdf).
 
-## 3. Repository structure
-
-```
-SuddWatch/
-├── .gitignore                 excludes .venv, credentials, large raw binaries, EE chunk caches
-├── requirements.txt           pinned package versions
-├── README.md
-├── data/
-│   ├── README.md              dataset documentation: panel structure, dictionary, snapshots, statistics
-│   ├── sample_ayod_county_timeseries.csv   one county's full time series (295 rows)
-│   ├── raw/                   original / as-extracted data (unaltered)
-│   │   ├── gee/               Earth Engine county-level extracts (Sentinel-1, static terrain)
-│   │   ├── ssd_admin_boundaries/   COD-AB admin0-2 GeoJSON
-│   │   ├── suddwatch_panel_unprocessed.csv   assembled panel audited in Phase 1
-│   │   └── county_thresholds_train_only.csv  per-county P75 thresholds (training years only)
-│   └── processed/             train/validation/test matrices (23 features), feature names, fitted preprocessor
-├── phase1_strategy/
-│   ├── Phase1_Strategy_Report.pdf   (IEEE conference format)
-│   └── audit/                 every audit table behind the report (CSV/JSON)
-├── phase2_implementation/
-│   ├── notebooks/pipeline_execution.ipynb   executable pipeline + all 8 diagnostic figures
-│   ├── Phase2_Final_Report.pdf              decision log, deviations, output verification (IEEE format)
-│   ├── phase2_summary.json                  every number used in the Phase 2 report
-│   └── label_sensitivity.json               label-variant check against UNOSAT
-├── src/
-│   ├── __init__.py
-│   ├── gee_extract.py         Earth Engine extraction (Sentinel-1, CHIRPS, SRTM/MERIT/JRC)
-│   ├── build_panel.py         joins, lags, train-only thresholds, target
-│   ├── data_card.py           generates data/README.md (dataset documentation shown on GitHub)
-│   ├── audit.py               Phase 1 audit (shape, types, missingness, skew, outliers, associations, VIF)
-│   ├── label_sensitivity.py   Phase 2 label-variant check against UNOSAT (Earth Engine)
-│   ├── report_phase1.py       renders the Phase 1 report from the audit outputs
-│   ├── report_phase2.py       renders the Phase 2 report from the notebook outputs
-│   ├── transformers.py        custom transformers (county-median imputer, momentum feature, IQR/Z capper, cyclical encoder)
-│   └── pipeline_builder.py    ColumnTransformer + Pipeline + temporal CV definitions
-└── figures/                   the 8 required 300-DPI figures (fig1_1 … fig5_1)
-```
-
-## 4. Reproduce
+## 3. Reproduce
 
 ```bash
 python -m venv .venv
@@ -148,7 +110,7 @@ python -m venv .venv
 The UNOSAT GeoPackage (67 MB) is excluded from Git because of size; download it from the HDX link
 above into `data/raw/` to re-run the label validation.
 
-## 5. Pipeline summary (Phase 1 plan → Phase 2 implementation)
+## 4. Pipeline summary (Phase 1 plan → Phase 2 implementation)
 
 1. **Split first** (temporal): train = issue dates < 2024-01-01, validation = 2024-01-01 – 2025-06-30,
    test = 2025-07-01 – 2026-08-31 (covers the 2025 flood season). Inner tuning uses
@@ -164,7 +126,7 @@ above into `data/raw/` to re-run the label validation.
 
 All fitted statistics live inside one scikit-learn `Pipeline` that is fitted on `X_train` only.
 
-## 6. Phase 2 results (summary)
+## 5. Phase 2 results (summary)
 
 | | |
 |---|---|
