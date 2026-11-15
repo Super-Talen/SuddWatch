@@ -137,3 +137,31 @@ All fitted statistics live inside one scikit-learn `Pipeline` that is fitted on 
 | Feature reduction | 34 → 23 features; baseline PR-AUC (temporal CV) 0.534 → 0.550, validation 0.831 → 0.833 — no information loss |
 | PCA | 9 / 13 of 23 components for 90 % / 95 % variance (diagnostic only) |
 | Carried to modelling | rising exceedance rate since 2022 (drift), VH −26 dB label variant, decision-threshold tuning |
+
+## 6. Phase 3: model, API and deployment
+
+Phase 3 answers the Phase 2 feedback point by point and adds the forecasting model and a web API:
+**[`phase3_modeling/Response_to_Phase2_Feedback.md`](phase3_modeling/Response_to_Phase2_Feedback.md)**.
+
+| | |
+|---|---|
+| Feedback applied | past-only seasonal gap filling (error −29 % vs static medians), 12-month rolling anomaly, threshold-relative water level, single terrain index (the tie-break was unstable), sensor-era reporting, VH −26 dB variant tested |
+| Model | gradient-boosted trees (`HistGradientBoostingClassifier`) tuned with `TimeSeriesSplit`, Platt-calibrated, dynamic threshold chosen on validation with false alarms ≤ 15 % |
+| Validation PR-AUC | **0.891** (persistence 0.835, Phase 2 preprocessing 0.856) |
+| Test (Jul 2025 – Aug 2026) | PR-AUC **0.927**, Macro-F1 **0.888**, false alarms **10.5 %**, ECE **0.031** (persistence PR-AUC 0.919; see the disclosure in the response document) |
+| Year-by-year metrics | [`phase3_modeling/results/metrics_by_year.csv`](phase3_modeling/results/metrics_by_year.csv), 2017–2026 |
+| API | FastAPI in [`api/main.py`](api/main.py): `/forecast/latest`, `/forecast/latest/{county}`, `/predict`, `/model`, `/counties`, `/health`, docs at `/docs` |
+
+**Run the API locally**
+
+```bash
+.venv\Scripts\python -m uvicorn api.main:app --reload            # http://127.0.0.1:8000/docs
+docker build -t suddwatch-api:1.0 . && docker run -p 8000:8000 suddwatch-api:1.0
+```
+
+**Retrain**
+
+```bash
+.venv\Scripts\python -m src.features_v2 && .venv\Scripts\python -m src.train_model && .venv\Scripts\python -m src.export_latest
+.venv\Scripts\python -m pytest tests
+```

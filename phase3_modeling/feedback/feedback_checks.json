@@ -1,0 +1,163 @@
+{
+  "chosen_tau_days": 120,
+  "hidden_observations": 2344,
+  "imputation": [
+    {
+      "method": "Phase 2: static county median",
+      "MAE_pct_points": 0.114,
+      "median_AE_pct_points": 0.0176,
+      "spearman_with_truth": 0.8638,
+      "within_county_sd_of_fill": 0.0
+    },
+    {
+      "method": "last observation only",
+      "MAE_pct_points": 0.13,
+      "median_AE_pct_points": 0.0149,
+      "spearman_with_truth": 0.8264,
+      "within_county_sd_of_fill": 0.0
+    },
+    {
+      "method": "seasonal blend, tau=12 d",
+      "MAE_pct_points": 0.0938,
+      "median_AE_pct_points": 0.0114,
+      "spearman_with_truth": 0.9385,
+      "within_county_sd_of_fill": 0.069
+    },
+    {
+      "method": "seasonal blend, tau=24 d",
+      "MAE_pct_points": 0.0903,
+      "median_AE_pct_points": 0.011,
+      "spearman_with_truth": 0.9403,
+      "within_county_sd_of_fill": 0.0675
+    },
+    {
+      "method": "seasonal blend, tau=60 d",
+      "MAE_pct_points": 0.0826,
+      "median_AE_pct_points": 0.0121,
+      "spearman_with_truth": 0.9366,
+      "within_county_sd_of_fill": 0.062
+    },
+    {
+      "method": "seasonal blend, tau=120 d",
+      "MAE_pct_points": 0.0813,
+      "median_AE_pct_points": 0.0132,
+      "spearman_with_truth": 0.9206,
+      "within_county_sd_of_fill": 0.0439
+    },
+    {
+      "method": "seasonal blend, tau=240 d",
+      "MAE_pct_points": 0.0915,
+      "median_AE_pct_points": 0.015,
+      "spearman_with_truth": 0.8995,
+      "within_county_sd_of_fill": 0.0311
+    },
+    {
+      "method": "seasonal blend, tau=480 d",
+      "MAE_pct_points": 0.1048,
+      "median_AE_pct_points": 0.0156,
+      "spearman_with_truth": 0.8765,
+      "within_county_sd_of_fill": 0.0208
+    }
+  ],
+  "terrain_stability": [
+    {
+      "feature": "elev_mean_m",
+      "win_share": 0.14,
+      "mi_median": 0.0442,
+      "mi_p05": 0.0289,
+      "mi_p95": 0.0545
+    },
+    {
+      "feature": "elev_std_m",
+      "win_share": 0.17,
+      "mi_median": 0.0432,
+      "mi_p05": 0.0304,
+      "mi_p95": 0.0559
+    },
+    {
+      "feature": "slope_mean_deg",
+      "win_share": 0.19,
+      "mi_median": 0.0443,
+      "mi_p05": 0.0303,
+      "mi_p95": 0.0562
+    },
+    {
+      "feature": "hand_mean_m",
+      "win_share": 0.22,
+      "mi_median": 0.0437,
+      "mi_p05": 0.0297,
+      "mi_p95": 0.056
+    },
+    {
+      "feature": "hand_lt5m_frac",
+      "win_share": 0.08,
+      "mi_median": 0.041,
+      "mi_p05": 0.028,
+      "mi_p95": 0.0531
+    },
+    {
+      "feature": "twi_mean",
+      "win_share": 0.2,
+      "mi_median": 0.0441,
+      "mi_p05": 0.0306,
+      "mi_p95": 0.0571
+    }
+  ],
+  "terrain_winner": "hand_mean_m",
+  "collinear_pairs_v2": [
+    {
+      "a": "hand_lt5m_frac",
+      "b": "twi_mean",
+      "spearman": 0.964
+    }
+  ],
+  "vif_v2": {
+    "water_frac": 1000799917193443.5,
+    "water_frac_12m_mean": 1000799917193443.5,
+    "water_frac_anomaly": 1000799917193443.5,
+    "water_frac_delta": 1.61,
+    "water_frac_days": 2.03,
+    "obs_frac": 2.26,
+    "n_scenes": 1.28,
+    "rain_36d_mm": 1.11,
+    "rain_90d_anom_mm": 1.11,
+    "county_area_km2": 1.06,
+    "jrc_water_occurrence_pct": 1.48,
+    "hand_lt5m_frac": 72.84,
+    "twi_mean": 72.31
+  },
+  "mi_v2": {
+    "water_frac": 0.119,
+    "water_frac_12m_mean": 0.0872,
+    "water_frac_anomaly": 0.1255,
+    "water_frac_delta": 0.0955,
+    "water_frac_days": 0.0019,
+    "obs_frac": 0.0348,
+    "n_scenes": 0.0333,
+    "rain_36d_mm": 0.0783,
+    "rain_90d_anom_mm": 0.0354,
+    "county_area_km2": 0.0418,
+    "jrc_water_occurrence_pct": 0.0385,
+    "hand_lt5m_frac": 0.0399,
+    "twi_mean": 0.0389
+  },
+  "anomaly_spearman": {
+    "water_frac": 0.237,
+    "water_frac_12m_mean": -0.195,
+    "water_frac_anomaly": 1.0,
+    "water_frac_delta": 0.246,
+    "water_frac_days": 0.07,
+    "obs_frac": -0.016,
+    "n_scenes": -0.171,
+    "rain_36d_mm": -0.326,
+    "rain_90d_anom_mm": -0.177,
+    "county_area_km2": 0.004,
+    "jrc_water_occurrence_pct": -0.036,
+    "hand_lt5m_frac": -0.107,
+    "twi_mean": -0.099
+  },
+  "gap_example": {
+    "county": "Pariang",
+    "filled_windows": 118
+  }
+}

@@ -1,0 +1,9 @@
+# Only the API, the model and the few src modules it imports go into the image
+*
+!api/
+!models/suddwatch_model.joblib
+!src/__init__.py
+!src/transformers.py
+!src/pipeline_v2.py
+!src/calibration.py
+api/__pycache__/

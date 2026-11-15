@@ -114,6 +114,54 @@ def run_s1():
     print("wrote", OUT / "s1_water_by_county_window.csv", df.shape, flush=True)
 
 
+# ---------------------------------------------------------------- Sentinel-1 VH variant (Phase 3)
+VH_DB = -26      # cross-pol threshold; best Sudd-core agreement with UNOSAT in the Phase 2 sensitivity check
+
+
+def s1_vh_window(counties, start):
+    """VH < -26 dB surface water per county, same windows, masks and scale as the VV label."""
+    end = start + timedelta(days=WINDOW_DAYS)
+    out = OUT / "s1vh" / f"s1vh_{start:%Y%m%d}.csv"
+    if out.exists():
+        return out, "cached"
+    col = (ee.ImageCollection("COPERNICUS/S1_GRD")
+           .filterBounds(counties.geometry().bounds())
+           .filterDate(str(start), str(end))
+           .filter(ee.Filter.eq("instrumentMode", "IW"))
+           .filter(ee.Filter.listContains("transmitterReceiverPolarisation", "VH"))
+           .select("VH"))
+    vh = col.median()
+    hand = ee.Image("MERIT/Hydro/v1_0_1").select("hnd")
+    px = ee.Image.pixelArea().divide(1e6)
+    eligible = vh.mask().gt(0).And(hand.lt(HAND_MAX_M))
+    stack = ee.Image.cat([
+        eligible.unmask(0).multiply(px).rename("vh_eligible_km2"),
+        vh.lt(VH_DB).And(eligible).unmask(0).multiply(px).rename("vh_water_km2"),
+    ])
+    fc = stack.reduceRegions(collection=counties, reducer=ee.Reducer.sum(),
+                             scale=S1_SCALE_M, tileScale=4).map(lambda f: f.setGeometry(None))
+    res = with_retry(lambda: fc.getInfo())
+    rows = [{"adm2_pcode": f["properties"]["adm2_pcode"], "window_start": str(start),
+             "vh_eligible_km2": f["properties"].get("vh_eligible_km2", 0.0),
+             "vh_water_km2": f["properties"].get("vh_water_km2", 0.0)} for f in res["features"]]
+    out.parent.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(rows).to_csv(out, index=False)
+    return out, "fetched"
+
+
+def run_s1_vh():
+    counties = counties_fc()
+    starts, d = [], S1_START
+    while d + timedelta(days=WINDOW_DAYS - 1) <= S1_END:
+        starts.append(d)
+        d += timedelta(days=WINDOW_DAYS)
+    print(f"Sentinel-1 VH: {len(starts)} windows x 79 counties", flush=True)
+    _run_parallel(lambda s: s1_vh_window(counties, s), starts, "S1-VH")
+    df = pd.concat([pd.read_csv(p) for p in sorted((OUT / "s1vh").glob("s1vh_*.csv"))])
+    df.to_csv(OUT / "s1_vh26_by_county_window.csv", index=False)
+    print("wrote", OUT / "s1_vh26_by_county_window.csv", df.shape, flush=True)
+
+
 # ---------------------------------------------------------------- CHIRPS
 def chirps_year(counties, y):
     out = OUT / "chirps" / f"chirps_{y}.csv"
@@ -202,5 +250,7 @@ if __name__ == "__main__":
         run_static()
     if what in ("chirps", "all"):
         run_chirps()
+    if what == "vh":
+        run_s1_vh()
     if what in ("s1", "all"):
         run_s1()

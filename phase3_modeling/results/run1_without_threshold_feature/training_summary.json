@@ -1,0 +1,54 @@
+{
+  "best_params": {
+    "learning_rate": 0.03,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 20,
+    "l2_regularization": 0.1,
+    "max_iter": 400,
+    "class_weight": null
+  },
+  "validation_comparison": {
+    "Persistence (flooded now -> flooded in 2 windows)": 0.8354,
+    "Climatology (county x month training rate)": 0.6655,
+    "Logistic regression, Phase 3 features": 0.8341,
+    "Gradient boosting, Phase 2 preprocessing": 0.8606,
+    "Gradient boosting, Phase 3 preprocessing (selected)": 0.8689,
+    "Gradient boosting, Phase 3 + VH -26 dB feature": 0.8674
+  },
+  "validation_prevalence": 0.3689,
+  "vh_adopted": false,
+  "thresholds": {
+    "static": 0.26,
+    "dynamic": 0.35,
+    "calibration_base_prior": 0.1819
+  },
+  "test": {
+    "rows": 2662.0,
+    "prevalence": 0.3681,
+    "pr_auc": 0.839,
+    "macro_f1_static": 0.8159,
+    "macro_f1_dynamic": 0.814,
+    "false_alarm_static": 0.126,
+    "false_alarm_dynamic": 0.1629,
+    "ece_static": 0.1197,
+    "ece_dynamic": 0.0543
+  },
+  "validation": {
+    "rows": 2792.0,
+    "prevalence": 0.3689,
+    "pr_auc": 0.8689,
+    "macro_f1_static": 0.8325,
+    "macro_f1_dynamic": 0.8341,
+    "false_alarm_static": 0.1442,
+    "false_alarm_dynamic": 0.1816,
+    "ece_static": 0.1023,
+    "ece_dynamic": 0.0428
+  },
+  "test_baselines_pr_auc": {
+    "persistence": 0.9193,
+    "climatology": 0.6148,
+    "random (prevalence)": 0.3681
+  },
+  "pi_latest_known": 0.383,
+  "runtime_s": 499
+}

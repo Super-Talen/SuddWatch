@@ -1,0 +1,9 @@
+method,MAE_pct_points,median_AE_pct_points,spearman_with_truth,within_county_sd_of_fill
+Phase 2: static county median,0.114,0.0176,0.8638,0.0
+last observation only,0.13,0.0149,0.8264,0.0
+"seasonal blend, tau=12 d",0.0938,0.0114,0.9385,0.069
+"seasonal blend, tau=24 d",0.0903,0.011,0.9403,0.0675
+"seasonal blend, tau=60 d",0.0826,0.0121,0.9366,0.062
+"seasonal blend, tau=120 d",0.0813,0.0132,0.9206,0.0439
+"seasonal blend, tau=240 d",0.0915,0.015,0.8995,0.0311
+"seasonal blend, tau=480 d",0.1048,0.0156,0.8765,0.0208

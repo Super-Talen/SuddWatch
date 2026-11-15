@@ -1,0 +1,4 @@
+s,rows,prevalence,pr_auc,macro_f1_static,macro_f1_dynamic,false_alarm_static,false_alarm_dynamic,ece_static,ece_dynamic,source
+test,2662,0.3681,0.839,0.8159,0.814,0.126,0.1629,0.1197,0.0543,test (fitted on 2017 - mid-2025)
+train,15424,0.1897,0.6702,0.7726,0.7838,0.1311,0.0924,0.0077,0.0098,train (retrospective: fitted on 2018-2023)
+validation,2792,0.3689,0.8689,0.8325,0.8341,0.1442,0.1816,0.1023,0.0428,validation (fitted on 2017-2023)

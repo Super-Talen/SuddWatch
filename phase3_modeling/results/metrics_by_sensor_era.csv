@@ -1,0 +1,4 @@
+sensor_era,rows,prevalence,pr_auc,macro_f1_static,macro_f1_dynamic,false_alarm_static,false_alarm_dynamic,ece_static,ece_dynamic,source
+S1A only,6501,0.2961,0.8313,0.8355,0.8361,0.1073,0.1023,0.0386,0.0111,train (out-of-sample: fitted on 2017-2020)
+S1A+S1B,11715,0.1734,0.7168,0.8081,0.8086,0.0794,0.057,0.0098,0.0133,train (retrospective: fitted on 2018-2023)
+S1A+S1C/D,2662,0.3681,0.9271,0.8954,0.8882,0.0767,0.1046,0.0639,0.0307,test (fitted on 2017 - mid-2025)
