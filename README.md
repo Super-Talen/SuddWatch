@@ -151,6 +151,17 @@ Phase 3 answers the Phase 2 feedback point by point and adds the forecasting mod
 | Test (Jul 2025 – Aug 2026) | PR-AUC **0.927**, Macro-F1 **0.888**, false alarms **10.5 %**, ECE **0.031** (persistence PR-AUC 0.919; see the disclosure in the response document) |
 | Year-by-year metrics | [`phase3_modeling/results/metrics_by_year.csv`](phase3_modeling/results/metrics_by_year.csv), 2017–2026 |
 | API | FastAPI in [`api/main.py`](api/main.py): `/forecast/latest`, `/forecast/latest/{county}`, `/predict`, `/model`, `/counties`, `/health`, docs at `/docs` |
+| Live deployment | **https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/docs** (Azure Container Apps, South Africa North; scales to zero when idle, so the first request may take a few seconds) |
+
+**Try the live API**
+
+| Request | Returns |
+|---|---|
+| [`/forecast/latest?top=10`](https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/forecast/latest?top=10) | the 10 highest-risk counties for the latest issue date |
+| [`/forecast/latest?state=Jonglei`](https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/forecast/latest?state=Jonglei) | every county in one state |
+| [`/forecast/latest/SS0302`](https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/forecast/latest/SS0302) | one county (Ayod) |
+| [`/model`](https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/model) | model card: target, threshold, validation and test metrics, library versions |
+| `POST /predict` | scores your own feature rows (schema and an example in `/docs`) |
 
 **Run the API locally**
 
@@ -158,6 +169,15 @@ Phase 3 answers the Phase 2 feedback point by point and adds the forecasting mod
 .venv\Scripts\python -m uvicorn api.main:app --reload            # http://127.0.0.1:8000/docs
 docker build -t suddwatch-api:1.0 . && docker run -p 8000:8000 suddwatch-api:1.0
 ```
+
+**Deploy to Azure** (Azure for Students; needs the Azure CLI after `az login`, and Docker)
+
+```powershell
+powershell -ExecutionPolicy Bypass -File deploy\azure_deploy.ps1             # first deployment
+powershell -ExecutionPolicy Bypass -File deploy\azure_deploy.ps1 -Tag 1.0.1  # ship a retrained model
+```
+
+The script header explains the student-subscription workarounds: an allowed region, a local image build because ACR Tasks is blocked, and registry credentials because express environments don't support managed identity.
 
 **Retrain**
 

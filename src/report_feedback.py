@@ -171,6 +171,18 @@ was selected on validation evidence only ({r1['validation_comparison']['Gradient
 but because the change was prompted by a test result, the test period is no longer a fully untouched hold-out for it. Run 1's results
 are kept unchanged in `phase3_modeling/results/run1_without_threshold_feature/`. The next labelled flood season (2026–27) will be the clean test.
 
+## Deployment
+
+The model is served by FastAPI (`api/main.py`) in a Docker container on Azure Container Apps (Azure for Students,
+South Africa North). It scales to zero when idle, so the first request may take a few seconds.
+
+- Interactive documentation: https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/docs
+- Latest forecast, 10 highest-risk counties: https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/forecast/latest?top=10
+- Model card with the metrics above: https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/model
+
+Every request applies the same steps as the evaluation: the fitted pipeline, Platt calibration, the prior-shift correction
+to the latest known flood rate, and the dynamic threshold. `deploy/azure_deploy.ps1` rebuilds and redeploys the service.
+
 ## Reproduce
 
 ```bash
