@@ -1,0 +1,20 @@
+dimension,slice,rows,positives,prevalence,pr_auc_model,pr_auc_persistence,recall_model,recall_persistence,false_alarm_model,false_alarm_persistence,macro_f1_model
+regime,dry now (onset cases),1690,126,0.0746,0.3426,0.2895,0.3175,0.0,0.0409,0.0,0.6501
+regime,wet now (persistence / recession cases),972,854,0.8786,0.9527,0.9465,0.9778,1.0,0.9492,1.0,0.5056
+adm1_name,Abyei Region,35,8,0.2286,0.8884,0.8817,0.875,0.75,0.1481,0.0741,0.8194
+adm1_name,Central Equatoria,199,46,0.2312,0.9147,0.8575,0.8478,0.8478,0.0458,0.0392,0.901
+adm1_name,Eastern Equatoria,280,53,0.1893,0.7183,0.6869,0.6604,0.7547,0.0705,0.0485,0.7993
+adm1_name,Jonglei,371,209,0.5633,0.9592,0.9633,0.9234,0.8947,0.1975,0.1358,0.8668
+adm1_name,Lakes,267,141,0.5281,0.9095,0.871,0.844,0.8582,0.1429,0.119,0.8499
+adm1_name,Northern Bahr el Ghazal,166,14,0.0843,0.713,0.5936,0.7143,0.5,0.1053,0.0461,0.7158
+adm1_name,Unity,305,237,0.777,1.0,1.0,1.0,1.0,0.0,0.0,1.0
+adm1_name,Upper Nile,402,212,0.5274,0.933,0.9187,0.8868,0.8774,0.1842,0.1474,0.8522
+adm1_name,Warrap,206,36,0.1748,0.7358,0.6186,0.8333,0.6667,0.1176,0.0588,0.809
+adm1_name,Western Bahr el Ghazal,99,10,0.101,0.508,0.4325,0.9,0.3,0.1461,0.0787,0.7391
+adm1_name,Western Equatoria,332,14,0.0422,0.408,0.3124,0.5714,0.2857,0.0472,0.0314,0.6995
+county_wetness,dry counties (low threshold),908,138,0.152,0.6645,0.5727,0.6957,0.6159,0.0883,0.0675,0.7816
+county_wetness,middle,882,234,0.2653,0.8671,0.8986,0.8376,0.8419,0.0957,0.0478,0.8591
+county_wetness,wet counties (high threshold),872,608,0.6972,0.974,0.9794,0.9589,0.9408,0.1742,0.1326,0.9013
+season,dry season (Nov-Apr),1174,530,0.4514,0.9218,0.9055,0.917,0.8547,0.1957,0.1025,0.8551
+season,rainy season (May-Oct),1488,450,0.3024,0.9541,0.9362,0.8644,0.8911,0.0482,0.0501,0.911
+sensor_era,S1A+S1C/D,2662,980,0.3681,0.9253,0.9193,0.8929,0.8714,0.1046,0.0702,0.8882

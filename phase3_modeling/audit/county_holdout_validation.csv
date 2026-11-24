@@ -1,0 +1,6 @@
+fold,held_out_counties,rows,prevalence,pr_auc_unseen_counties,pr_auc_persistence_same_rows
+1,16,607,0.2339,0.8103,0.802
+2,16,538,0.4201,0.8903,0.8631
+3,16,537,0.4469,0.9313,0.8523
+4,16,578,0.3581,0.8424,0.8378
+5,15,532,0.4041,0.8676,0.8018

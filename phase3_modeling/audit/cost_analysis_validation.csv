@@ -1,0 +1,6 @@
+miss_cost_over_false_alarm_cost,cost_deployed_threshold,deployed_threshold,cost_optimal_threshold_on_validation,cost_at_optimal_threshold,theory_optimal_threshold_1_over_1_plus_r,cost_persistence_rule,cost_alert_nobody,cost_alert_everybody
+1,0.1343,0.44,0.55,0.1325,0.5,0.1404,0.3689,0.6311
+2,0.1812,0.44,0.4,0.173,0.333,0.2052,0.7378,0.6311
+3,0.2282,0.44,0.25,0.1991,0.25,0.2701,1.1067,0.6311
+5,0.322,0.44,0.23,0.2321,0.167,0.3997,1.8446,0.6311
+10,0.5566,0.44,0.15,0.283,0.091,0.7239,3.6891,0.6311

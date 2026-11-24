@@ -1,0 +1,10 @@
+variant,neutralised,val_pr_auc,delta_vs_full
+full model (all features),-,0.8913,0.0
+without water level now and past (Sentinel-1),"water_frac, water_frac_last, water_frac_days, water_frac_lag1, water_frac_lag1_last, water_frac_lag1_days, water_frac_12m_mean",0.7509,-0.1404
+without county flood threshold,y_threshold_frac,0.8685,-0.0227
+without rainfall (CHIRPS),"rain_36d_mm, rain_90d_anom_mm",0.8902,-0.0011
+without terrain and static county data,"elev_mean_m, elev_std_m, slope_mean_deg, hand_mean_m, hand_lt5m_frac, twi_mean, county_area_km2, jrc_water_occurrence_pct",0.8888,-0.0025
+without state,adm1_name,0.8916,0.0004
+without season (month),month,0.8964,0.0052
+"without acquisition metadata (scenes, coverage)","n_scenes, obs_frac",0.8977,0.0065
+"shortcut-only (state, month, acquisition metadata)","water_frac, water_frac_last, water_frac_days, water_frac_lag1, water_frac_lag1_last, water_frac_lag1_days, water_frac_12m_mean, y_threshold_frac, rain_36d_mm, rain_90d_anom_mm, elev_mean_m, elev_std_m, slope_mean_deg, hand_mean_m, hand_lt5m_frac, twi_mean, county_area_km2, jrc_water_occurrence_pct",0.6967,-0.1945

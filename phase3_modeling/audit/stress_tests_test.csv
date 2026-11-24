@@ -1,0 +1,9 @@
+scenario,pr_auc,macro_f1,false_alarm,recall,alerts,how,delta_pr_auc
+baseline (as deployed),0.9253,0.8882,0.1046,0.8929,1051,unchanged test inputs,0.0
+radar outage: current pass missed,0.9097,0.868,0.1112,0.8541,1024,water_frac removed; last observation = previous window's,-0.0155
+radar outage: two passes missed (24 days),0.8883,0.8454,0.1225,0.8173,1007,current and previous water removed,-0.037
+radar outage: six months (15 passes),0.7714,0.7468,0.1332,0.6122,824,only observations older than 180 days remain,-0.1539
+water measurement noise (+/-20 %),0.9139,0.8786,0.1058,0.8714,1032,"log-normal noise, sd 0.2, on all water inputs",-0.0113
+rainfall bias -20 %,0.9246,0.8906,0.1034,0.8969,1053,CHIRPS totals scaled; 90-day anomaly shifted consistently,-0.0007
+rainfall bias +20 %,0.9239,0.8908,0.0999,0.8918,1042,CHIRPS totals scaled; 90-day anomaly shifted consistently,-0.0014
+fewer Sentinel-1 scenes,0.9355,0.8795,0.1183,0.8929,1074,"one scene per window, half the county observed",0.0103

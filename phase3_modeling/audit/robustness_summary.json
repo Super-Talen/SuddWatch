@@ -1,0 +1,361 @@
+{
+  "bootstrap": {
+    "resamples": 2000,
+    "blocks": "issue dates (forecast cycles)",
+    "test_cycles": 35,
+    "ci95": {
+      "pr_auc_model": {
+        "estimate": 0.9253,
+        "ci95_low": 0.8855,
+        "ci95_high": 0.9567,
+        "share_of_draws_above_0": NaN
+      },
+      "pr_auc_persistence": {
+        "estimate": 0.9193,
+        "ci95_low": 0.8917,
+        "ci95_high": 0.9458,
+        "share_of_draws_above_0": NaN
+      },
+      "macro_f1_model": {
+        "estimate": 0.8882,
+        "ci95_low": 0.8621,
+        "ci95_high": 0.9108,
+        "share_of_draws_above_0": NaN
+      },
+      "macro_f1_persistence": {
+        "estimate": 0.9013,
+        "ci95_low": 0.8787,
+        "ci95_high": 0.9214,
+        "share_of_draws_above_0": NaN
+      },
+      "false_alarm_model": {
+        "estimate": 0.1046,
+        "ci95_low": 0.0668,
+        "ci95_high": 0.152,
+        "share_of_draws_above_0": NaN
+      },
+      "false_alarm_persistence": {
+        "estimate": 0.0702,
+        "ci95_low": 0.0434,
+        "ci95_high": 0.102,
+        "share_of_draws_above_0": NaN
+      },
+      "ece_model": {
+        "estimate": 0.0307,
+        "ci95_low": 0.023,
+        "ci95_high": 0.0507,
+        "share_of_draws_above_0": NaN
+      },
+      "p_at_10_model": {
+        "estimate": 0.9543,
+        "ci95_low": 0.9086,
+        "ci95_high": 0.9886,
+        "share_of_draws_above_0": NaN
+      },
+      "p_at_10_persistence": {
+        "estimate": 0.9486,
+        "ci95_low": 0.9086,
+        "ci95_high": 0.98,
+        "share_of_draws_above_0": NaN
+      },
+      "pr_auc_difference": {
+        "estimate": 0.0059,
+        "ci95_low": -0.0132,
+        "ci95_high": 0.0224,
+        "share_of_draws_above_0": 0.753
+      },
+      "macro_f1_difference": {
+        "estimate": -0.0132,
+        "ci95_low": -0.0238,
+        "ci95_high": -0.0031,
+        "share_of_draws_above_0": 0.0095
+      },
+      "p_at_10_difference": {
+        "estimate": 0.0057,
+        "ci95_low": -0.0114,
+        "ci95_high": 0.0229,
+        "share_of_draws_above_0": 0.6995
+      }
+    }
+  },
+  "tuning_cv_fold_spread": {
+    "cv_pr_auc_mean": 0.704,
+    "cv_pr_auc_sd": 0.0736,
+    "folds": 5
+  },
+  "precision_at_k_test": [
+    {
+      "k": 5,
+      "model": 0.9714,
+      "persistence": 0.9771,
+      "random": 0.3681
+    },
+    {
+      "k": 10,
+      "model": 0.9543,
+      "persistence": 0.9486,
+      "random": 0.3681
+    },
+    {
+      "k": 20,
+      "model": 0.8957,
+      "persistence": 0.88,
+      "random": 0.3681
+    }
+  ],
+  "cost_analysis_validation": [
+    {
+      "miss_cost_over_false_alarm_cost": 1,
+      "cost_deployed_threshold": 0.1343,
+      "deployed_threshold": 0.44,
+      "cost_optimal_threshold_on_validation": 0.55,
+      "cost_at_optimal_threshold": 0.1325,
+      "theory_optimal_threshold_1_over_1_plus_r": 0.5,
+      "cost_persistence_rule": 0.1404,
+      "cost_alert_nobody": 0.3689,
+      "cost_alert_everybody": 0.6311
+    },
+    {
+      "miss_cost_over_false_alarm_cost": 2,
+      "cost_deployed_threshold": 0.1812,
+      "deployed_threshold": 0.44,
+      "cost_optimal_threshold_on_validation": 0.4,
+      "cost_at_optimal_threshold": 0.173,
+      "theory_optimal_threshold_1_over_1_plus_r": 0.333,
+      "cost_persistence_rule": 0.2052,
+      "cost_alert_nobody": 0.7378,
+      "cost_alert_everybody": 0.6311
+    },
+    {
+      "miss_cost_over_false_alarm_cost": 3,
+      "cost_deployed_threshold": 0.2282,
+      "deployed_threshold": 0.44,
+      "cost_optimal_threshold_on_validation": 0.25,
+      "cost_at_optimal_threshold": 0.1991,
+      "theory_optimal_threshold_1_over_1_plus_r": 0.25,
+      "cost_persistence_rule": 0.2701,
+      "cost_alert_nobody": 1.1067,
+      "cost_alert_everybody": 0.6311
+    },
+    {
+      "miss_cost_over_false_alarm_cost": 5,
+      "cost_deployed_threshold": 0.322,
+      "deployed_threshold": 0.44,
+      "cost_optimal_threshold_on_validation": 0.23,
+      "cost_at_optimal_threshold": 0.2321,
+      "theory_optimal_threshold_1_over_1_plus_r": 0.167,
+      "cost_persistence_rule": 0.3997,
+      "cost_alert_nobody": 1.8446,
+      "cost_alert_everybody": 0.6311
+    },
+    {
+      "miss_cost_over_false_alarm_cost": 10,
+      "cost_deployed_threshold": 0.5566,
+      "deployed_threshold": 0.44,
+      "cost_optimal_threshold_on_validation": 0.15,
+      "cost_at_optimal_threshold": 0.283,
+      "theory_optimal_threshold_1_over_1_plus_r": 0.091,
+      "cost_persistence_rule": 0.7239,
+      "cost_alert_nobody": 3.6891,
+      "cost_alert_everybody": 0.6311
+    }
+  ],
+  "regime_slices_test": [
+    {
+      "dimension": "regime",
+      "slice": "dry now (onset cases)",
+      "rows": 1690,
+      "positives": 126,
+      "prevalence": 0.0746,
+      "pr_auc_model": 0.3426,
+      "pr_auc_persistence": 0.2895,
+      "recall_model": 0.3175,
+      "recall_persistence": 0.0,
+      "false_alarm_model": 0.0409,
+      "false_alarm_persistence": 0.0,
+      "macro_f1_model": 0.6501
+    },
+    {
+      "dimension": "regime",
+      "slice": "wet now (persistence / recession cases)",
+      "rows": 972,
+      "positives": 854,
+      "prevalence": 0.8786,
+      "pr_auc_model": 0.9527,
+      "pr_auc_persistence": 0.9465,
+      "recall_model": 0.9778,
+      "recall_persistence": 1.0,
+      "false_alarm_model": 0.9492,
+      "false_alarm_persistence": 1.0,
+      "macro_f1_model": 0.5056
+    }
+  ],
+  "ablation_validation": [
+    {
+      "variant": "full model (all features)",
+      "val_pr_auc": 0.8913,
+      "delta_vs_full": 0.0
+    },
+    {
+      "variant": "without water level now and past (Sentinel-1)",
+      "val_pr_auc": 0.7509,
+      "delta_vs_full": -0.1404
+    },
+    {
+      "variant": "without county flood threshold",
+      "val_pr_auc": 0.8685,
+      "delta_vs_full": -0.0227
+    },
+    {
+      "variant": "without rainfall (CHIRPS)",
+      "val_pr_auc": 0.8902,
+      "delta_vs_full": -0.0011
+    },
+    {
+      "variant": "without terrain and static county data",
+      "val_pr_auc": 0.8888,
+      "delta_vs_full": -0.0025
+    },
+    {
+      "variant": "without state",
+      "val_pr_auc": 0.8916,
+      "delta_vs_full": 0.0004
+    },
+    {
+      "variant": "without season (month)",
+      "val_pr_auc": 0.8964,
+      "delta_vs_full": 0.0052
+    },
+    {
+      "variant": "without acquisition metadata (scenes, coverage)",
+      "val_pr_auc": 0.8977,
+      "delta_vs_full": 0.0065
+    },
+    {
+      "variant": "shortcut-only (state, month, acquisition metadata)",
+      "val_pr_auc": 0.6967,
+      "delta_vs_full": -0.1945
+    }
+  ],
+  "county_holdout": {
+    "pr_auc_unseen_counties_pooled": 0.8743,
+    "pr_auc_seen_counties_same_rows": 0.8913
+  },
+  "stress_tests_test": [
+    {
+      "scenario": "baseline (as deployed)",
+      "pr_auc": 0.9253,
+      "macro_f1": 0.8882,
+      "false_alarm": 0.1046,
+      "recall": 0.8929,
+      "alerts": 1051,
+      "delta_pr_auc": 0.0
+    },
+    {
+      "scenario": "radar outage: current pass missed",
+      "pr_auc": 0.9097,
+      "macro_f1": 0.868,
+      "false_alarm": 0.1112,
+      "recall": 0.8541,
+      "alerts": 1024,
+      "delta_pr_auc": -0.0155
+    },
+    {
+      "scenario": "radar outage: two passes missed (24 days)",
+      "pr_auc": 0.8883,
+      "macro_f1": 0.8454,
+      "false_alarm": 0.1225,
+      "recall": 0.8173,
+      "alerts": 1007,
+      "delta_pr_auc": -0.037
+    },
+    {
+      "scenario": "radar outage: six months (15 passes)",
+      "pr_auc": 0.7714,
+      "macro_f1": 0.7468,
+      "false_alarm": 0.1332,
+      "recall": 0.6122,
+      "alerts": 824,
+      "delta_pr_auc": -0.1539
+    },
+    {
+      "scenario": "water measurement noise (+/-20 %)",
+      "pr_auc": 0.9139,
+      "macro_f1": 0.8786,
+      "false_alarm": 0.1058,
+      "recall": 0.8714,
+      "alerts": 1032,
+      "delta_pr_auc": -0.0113
+    },
+    {
+      "scenario": "rainfall bias -20 %",
+      "pr_auc": 0.9246,
+      "macro_f1": 0.8906,
+      "false_alarm": 0.1034,
+      "recall": 0.8969,
+      "alerts": 1053,
+      "delta_pr_auc": -0.0007
+    },
+    {
+      "scenario": "rainfall bias +20 %",
+      "pr_auc": 0.9239,
+      "macro_f1": 0.8908,
+      "false_alarm": 0.0999,
+      "recall": 0.8918,
+      "alerts": 1042,
+      "delta_pr_auc": -0.0014
+    },
+    {
+      "scenario": "fewer Sentinel-1 scenes",
+      "pr_auc": 0.9355,
+      "macro_f1": 0.8795,
+      "false_alarm": 0.1183,
+      "recall": 0.8929,
+      "alerts": 1074,
+      "delta_pr_auc": 0.0103
+    }
+  ],
+  "top_permutation_importance": [
+    {
+      "feature": "water_frac",
+      "pr_auc_drop_mean": 0.4055,
+      "pr_auc_drop_sd": 0.0143
+    },
+    {
+      "feature": "y_threshold_frac",
+      "pr_auc_drop_mean": 0.1304,
+      "pr_auc_drop_sd": 0.0061
+    },
+    {
+      "feature": "month",
+      "pr_auc_drop_mean": 0.0225,
+      "pr_auc_drop_sd": 0.0064
+    },
+    {
+      "feature": "rain_36d_mm",
+      "pr_auc_drop_mean": 0.0141,
+      "pr_auc_drop_sd": 0.0041
+    },
+    {
+      "feature": "water_frac_lag1",
+      "pr_auc_drop_mean": 0.0122,
+      "pr_auc_drop_sd": 0.0019
+    },
+    {
+      "feature": "water_frac_last",
+      "pr_auc_drop_mean": 0.0104,
+      "pr_auc_drop_sd": 0.0015
+    },
+    {
+      "feature": "jrc_water_occurrence_pct",
+      "pr_auc_drop_mean": 0.0093,
+      "pr_auc_drop_sd": 0.0022
+    },
+    {
+      "feature": "adm2_pcode",
+      "pr_auc_drop_mean": 0.0058,
+      "pr_auc_drop_sd": 0.0008
+    }
+  ],
+  "runtime_s": 50
+}

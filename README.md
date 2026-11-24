@@ -138,6 +138,12 @@ All fitted statistics live inside one scikit-learn `Pipeline` that is fitted on 
 | PCA | 9 / 13 of 23 components for 90 % / 95 % variance (diagnostic only) |
 | Carried to modelling | rising exceedance rate since 2022 (drift), VH −26 dB label variant, decision-threshold tuning |
 
+## Technical evaluation guide
+
+**[EVALUATION.md](EVALUATION.md)** maps each technical rubric to its evidence. It covers missingness tests, leakage
+proofs, baselines with 95 % confidence intervals, error slices, ablation, stress tests, county hold-out, live latency, cost
+and secrets, with the command that reproduces every number.
+
 ## 6. Phase 3: model, API and deployment
 
 Phase 3 answers the Phase 2 feedback point by point and adds the forecasting model and a web API:

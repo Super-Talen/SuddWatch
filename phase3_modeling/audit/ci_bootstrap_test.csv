@@ -1,0 +1,13 @@
+metric,estimate,ci95_low,ci95_high,share_of_draws_above_0
+pr_auc_model,0.9253,0.8855,0.9567,
+pr_auc_persistence,0.9193,0.8917,0.9458,
+macro_f1_model,0.8882,0.8621,0.9108,
+macro_f1_persistence,0.9013,0.8787,0.9214,
+false_alarm_model,0.1046,0.0668,0.152,
+false_alarm_persistence,0.0702,0.0434,0.102,
+ece_model,0.0307,0.023,0.0507,
+p_at_10_model,0.9543,0.9086,0.9886,
+p_at_10_persistence,0.9486,0.9086,0.98,
+pr_auc_difference,0.0059,-0.0132,0.0224,0.753
+macro_f1_difference,-0.0132,-0.0238,-0.0031,0.0095
+p_at_10_difference,0.0057,-0.0114,0.0229,0.6995

@@ -1,0 +1,74 @@
+{
+  "variables": [
+    "water_frac",
+    "water_frac_lag1",
+    "water_frac_lag2",
+    "rain_36d_mm",
+    "rain_90d_anom_mm"
+  ],
+  "little_all_training_rows": {
+    "rows": 16906,
+    "patterns": 8,
+    "d2": 202.32,
+    "df": 23,
+    "p_value": 1.2326308609901953e-30,
+    "verdict": "reject MCAR"
+  },
+  "little_by_sensor_era": {
+    "S1A only": {
+      "rows": 4977,
+      "patterns": 8,
+      "d2": 229.73,
+      "df": 23,
+      "p_value": 5.1475402146131427e-36,
+      "verdict": "reject MCAR"
+    },
+    "S1A+S1B": {
+      "rows": 11929,
+      "patterns": 8,
+      "d2": 257.17,
+      "df": 23,
+      "p_value": 1.8401407175108935e-41,
+      "verdict": "reject MCAR"
+    }
+  },
+  "water_frac_missing_pct_train": 7.83,
+  "cramers_v_missing_vs": {
+    "sensor_era": {
+      "cramers_v": 0.359,
+      "chi2": 2176.2,
+      "dof": 1,
+      "p_value": 0.0
+    },
+    "state": {
+      "cramers_v": 0.326,
+      "chi2": 1800.0,
+      "dof": 10,
+      "p_value": 0.0
+    },
+    "month": {
+      "cramers_v": 0.038,
+      "chi2": 24.3,
+      "dof": 11,
+      "p_value": 0.011492386773942478
+    }
+  },
+  "mnar_check_coarse_logit": {
+    "rain_36d_per_100mm_coef": -0.295,
+    "p_value": 0.009746848265686805,
+    "adjusted_for": "state, month, sensor era"
+  },
+  "mnar_check_county_and_date_fixed_effects": {
+    "all_training_rows": {
+      "rows": 16906,
+      "coef_per_100mm": 0.0082,
+      "p_value": 0.61
+    },
+    "gap_years_2022_2023": {
+      "rows": 4898,
+      "coef_per_100mm": 0.0004,
+      "p_value": 0.9763
+    }
+  },
+  "conclusion": "Not MCAR (Little's test rejects in every era; missingness depends on era and state). The coarse logit finds a rainfall association (more rain, fewer gaps), but it disappears once county and date are held fixed (p = 0.61; 0.98 in the 2022-23 gap years): the gaps are explained by which counties the acquisition plan covers on which date, i.e. MAR on observed variables. MNAR cannot be excluded from observed data alone, so the stress tests also simulate long outages."
+}
