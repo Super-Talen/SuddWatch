@@ -41,3 +41,6 @@ phase1_strategy/Phase1_Strategy_Report.html
 phase2_implementation/Phase2_Final_Report.html
 data/raw/gee/sensitivity/
 data/raw/gee/s1vh/
+
+# Hand-downloaded photo originals (resized copies live in api/static/img)
+data/raw/web_photos/

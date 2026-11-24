@@ -151,7 +151,9 @@ Phase 3 answers the Phase 2 feedback point by point and adds the forecasting mod
 | Test (Jul 2025 – Aug 2026) | PR-AUC **0.927**, Macro-F1 **0.888**, false alarms **10.5 %**, ECE **0.031** (persistence PR-AUC 0.919; see the disclosure in the response document) |
 | Year-by-year metrics | [`phase3_modeling/results/metrics_by_year.csv`](phase3_modeling/results/metrics_by_year.csv), 2017–2026 |
 | API | FastAPI in [`api/main.py`](api/main.py): `/forecast/latest`, `/forecast/latest/{county}`, `/predict`, `/model`, `/counties`, `/health`, docs at `/docs` |
-| Live deployment | **https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/docs** (Azure Container Apps, South Africa North; scales to zero when idle, so the first request may take a few seconds) |
+| Live website | **https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/** (map of all 79 counties, ranked list, satellite and field photos) |
+| Live API docs | https://suddwatch-api.wittypond-9ed3ebe4.southafricanorth.azurecontainerapps.io/docs (Azure Container Apps, South Africa North; scales to zero when idle, so the first request may take a few seconds) |
+| Web page | [`api/static/`](api/static/): `index.html`, `styles.css` and `app.js` read `/forecast/latest` and `/model` in the browser; map shapes and photos are built by [`src/build_web_assets.py`](src/build_web_assets.py) |
 
 **Try the live API**
 

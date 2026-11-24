@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SuddWatch Flood Forecast</title>
+  <meta name="description" content="County-level flood forecasts for South Sudan, 13 to 24 days ahead, from Sentinel-1 radar, rainfall and terrain.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3c5 7 9 12 9 17a9 9 0 0 1-18 0c0-5 4-10 9-17z' fill='%232a78d6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SuddWatch home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c5 7 9 12 9 17a9 9 0 0 1-18 0c0-5 4-10 9-17z"/></svg>
+      SuddWatch
+    </a>
+    <nav>
+      <a href="#forecast">Forecast</a>
+      <a class="wide" href="#evidence">Satellite view</a>
+      <a class="wide" href="#how">How it works</a>
+      <a href="/docs">API</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <img class="hero-img" id="hero-img" alt="" hidden>
+    <div class="hero-shade"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">South Sudan flood forecast</p>
+      <h1>Which counties will be under water in the next 2–4 weeks?</h1>
+      <p class="lede" id="hero-lede">Loading the latest forecast…</p>
+      <div class="tiles">
+        <div class="tile"><span class="tile-value" id="t-alerts">–</span><span class="tile-label">counties on alert</span></div>
+        <div class="tile"><span class="tile-value" id="t-top">–</span><span class="tile-label" id="t-top-label">highest risk</span></div>
+        <div class="tile"><span class="tile-value" id="t-window">–</span><span class="tile-label">forecast window</span></div>
+      </div>
+      <a class="cta" href="#forecast">See the map</a>
+    </div>
+    <p class="photo-credit" id="hero-credit" hidden></p>
+  </section>
+
+  <main>
+    <section id="forecast" class="section">
+      <div class="section-head">
+        <h2>This cycle's forecast</h2>
+        <p>Each county is coloured by the chance that its surface water will rise above its own normal
+          high-water level (the 75th percentile of 2017–2023) between <strong id="f-window">…</strong>.
+          A county is put on <strong>alert</strong> when that chance reaches <strong id="f-threshold">…</strong>.</p>
+      </div>
+      <div class="forecast-grid">
+        <div class="map-card">
+          <div id="map" role="img" aria-label="Map of South Sudan counties coloured by flood probability"></div>
+          <div class="legend" id="legend" aria-hidden="true"></div>
+        </div>
+        <div class="list-card">
+          <div class="list-tools">
+            <label for="state">State</label>
+            <select id="state"><option value="">All states</option></select>
+            <span class="list-count" id="list-count"></span>
+          </div>
+          <ol class="county-list" id="county-list" aria-label="Counties ranked by flood probability"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="section" hidden>
+      <div class="section-head">
+        <h2>Why early warning matters</h2>
+        <p id="why-text">Since 2019, South Sudan has had four years of severe flooding along the Nile and in the
+          Sudd wetland; in 2021 Unity State saw its worst floods in 60 years. In our own satellite record, the share of county-periods above their normal high-water level
+          rose from <strong>19%</strong> in 2017–2023 to <strong>37%</strong> from mid-2025. Floods cut off roads,
+          clinics and farms for months. A warning two to four weeks ahead gives time to move supplies and people.</p>
+      </div>
+      <div class="photo-row" id="why-photos"></div>
+    </section>
+
+    <section id="evidence" class="section" hidden>
+      <div class="section-head">
+        <h2>What the satellite sees</h2>
+        <p>Satellite images of Bentiu, the capital of Unity State, where the floods of 2021 left the town surrounded by
+          water for years. SuddWatch watches the same landscape with <strong>Sentinel-1 radar</strong>,
+          which sees through clouds, so it can measure water in every county during the rainy season too.</p>
+      </div>
+      <div class="evidence" id="evidence-photos"></div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="section-head">
+        <h2>How SuddWatch works</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-n">1</span>
+          <h3>Observe</h3>
+          <p>Every 12 days, Sentinel-1 radar measures how much of each county is covered by water. Rainfall (CHIRPS)
+            and terrain (elevation, slope, height above the nearest river) add context.</p>
+        </li>
+        <li>
+          <span class="step-n">2</span>
+          <h3>Learn</h3>
+          <p>A gradient-boosted tree model learned from 2017–2023 which conditions come before a county's water rises
+            above its own normal level. It only ever sees information available on the forecast date.</p>
+        </li>
+        <li>
+          <span class="step-n">3</span>
+          <h3>Warn</h3>
+          <p>The model gives each county a calibrated probability. Counties above the alert threshold are flagged.
+            The threshold was set so that no more than 15% of non-flood cases raise a false alarm.</p>
+        </li>
+      </ol>
+      <div class="scores" id="scores"></div>
+      <p class="note">Honest comparison: simply assuming "flooded now means flooded in two weeks" already scores
+        <span id="s-persist">0.919</span> on the same test period. Floods in the Sudd last for months, so the model's
+        main gain is catching counties that are about to change, and doing so with reliable probabilities.</p>
+    </section>
+
+    <section id="developers" class="section dev">
+      <h2>For developers</h2>
+      <p>Every number on this page comes from the public API.</p>
+      <ul class="dev-links">
+        <li><a href="/docs">Interactive API documentation</a></li>
+        <li><a href="/forecast/latest">/forecast/latest</a>: all 79 counties as JSON</li>
+        <li><a href="/model">/model</a>: model card, threshold and test scores</li>
+        <li><a href="https://github.com/Super-Talen/SuddWatch">Source code on GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Research prototype.</strong> SuddWatch is not an official early-warning service. Follow guidance from
+      South Sudan's authorities and humanitarian agencies.</p>
+    <p>Data: Copernicus Sentinel-1 (ESA/EU), CHIRPS rainfall (UCSB Climate Hazards Center), SRTM and MERIT Hydro terrain,
+      JRC Global Surface Water, county boundaries from OCHA (COD-AB).</p>
+    <div id="credits"></div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

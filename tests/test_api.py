@@ -9,6 +9,16 @@ from api.main import app, latest
 client = TestClient(app)
 
 
+def test_homepage_and_static_assets():
+    r = client.get("/")
+    assert r.status_code == 200 and "text/html" in r.headers["content-type"] and "SuddWatch" in r.text
+    assert client.get("/static/app.js").status_code == 200
+    geo = client.get("/static/data/counties.geojson").json()
+    codes = {f["properties"]["adm2_pcode"] for f in geo["features"]}
+    assert codes == set(latest["adm2_pcode"])          # every forecast county has a shape on the map
+    assert client.get("/api").json()["docs"] == "/docs"
+
+
 def test_health_and_model_card():
     assert client.get("/health").json()["status"] == "ok"
     card = client.get("/model").json()

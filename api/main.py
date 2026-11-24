@@ -12,6 +12,8 @@ import joblib
 import numpy as np
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from src.calibration import prior_shift
@@ -19,6 +21,7 @@ from src.calibration import prior_shift
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = ROOT / "models/suddwatch_model.joblib"
 LATEST_PATH = ROOT / "api/latest_features.csv"
+STATIC_DIR = ROOT / "api/static"
 
 bundle = joblib.load(MODEL_PATH)
 PIPE, PLATT = bundle["pipeline"], bundle["platt"]
@@ -59,9 +62,18 @@ def as_records(df: pd.DataFrame) -> list:
     return out.sort_values("probability", ascending=False).to_dict(orient="records")
 
 
-@app.get("/", tags=["info"])
-def root():
-    return {"service": "SuddWatch flood-risk API", "docs": "/docs", "latest_forecast": "/forecast/latest",
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+
+@app.get("/", include_in_schema=False)
+def homepage():
+    """Public web page (map + county list); it reads /forecast/latest and /model in the browser."""
+    return FileResponse(STATIC_DIR / "index.html")
+
+
+@app.get("/api", tags=["info"])
+def api_index():
+    return {"service": "SuddWatch flood-risk API", "web": "/", "docs": "/docs", "latest_forecast": "/forecast/latest",
             "model_card": "/model", **window(latest["issue_date"].iloc[0])}
 
 

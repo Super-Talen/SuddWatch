@@ -1,0 +1,62 @@
+[
+  {
+    "key": "jonglei_children",
+    "file": "Children_in_a_Jonglei_state_of_South_Sudan_draining_water_due_to_flooding.jpg",
+    "title": "Children draining floodwater, Jonglei State (2023)",
+    "author": "Aropmathewdaniel",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "src": "/static/img/jonglei_children.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Children_in_a_Jonglei_state_of_South_Sudan_draining_water_due_to_flooding.jpg",
+    "width": 1000,
+    "height": 662
+  },
+  {
+    "key": "bentiu_before_after",
+    "file": "Floods_in_South_Sudan_(Copernicus).jpg",
+    "title": "Bentiu, Unity State: 21 Nov 2020 and 26 Nov 2021 (Sentinel-2, false colour)",
+    "author": "European Union, Copernicus Sentinel-2 imagery",
+    "license": "Attribution",
+    "license_url": "https://commons.wikimedia.org/wiki/File:Floods_in_South_Sudan_(Copernicus).jpg",
+    "src": "/static/img/bentiu_before_after.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Floods_in_South_Sudan_(Copernicus).jpg",
+    "width": 1600,
+    "height": 947
+  },
+  {
+    "key": "bentiu_from_space",
+    "file": "Earth_from_Space-_Bentiu,_South_Sudan_ESA25136828.jpg",
+    "title": "Bentiu and the surrounding wetlands from space (Sentinel-2, false colour, published 2023)",
+    "author": "ESA, contains modified Copernicus Sentinel data",
+    "license": "Attribution",
+    "license_url": "https://commons.wikimedia.org/wiki/File:Earth_from_Space-_Bentiu,_South_Sudan_ESA25136828.jpg",
+    "src": "/static/img/bentiu_from_space.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Earth_from_Space-_Bentiu,_South_Sudan_ESA25136828.jpg",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "key": "maban_flooding",
+    "file": "Flooding_in_Maban_county.jpg",
+    "title": "Flooding in Maban County, Upper Nile (September 2022)",
+    "author": "Data Bettuel",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "src": "/static/img/maban_flooding.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Flooding_in_Maban_county.jpg",
+    "width": 960,
+    "height": 573
+  },
+  {
+    "key": "health_facility",
+    "file": "Health_Facility_Flooded.jpg",
+    "title": "Health facility abandoned after flooding, Lakes State (2021)",
+    "author": "Odokonyeromari",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "src": "/static/img/health_facility.jpg",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Health_Facility_Flooded.jpg",
+    "width": 1080,
+    "height": 608
+  }
+]
